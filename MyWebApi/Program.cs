@@ -1,5 +1,4 @@
 using MyAPI;
-using MyAPI.Models;
 using MyAPI.Services;
 using MyAPI.Services.Contracts;
 
