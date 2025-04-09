@@ -8,14 +8,17 @@ namespace MyAPI
 	public class LogMiddleware
 	{
 		private readonly RequestDelegate _next;
+		private readonly ILogger<LogMiddleware> _logger;
 
-		public LogMiddleware(RequestDelegate next)
+		public LogMiddleware(RequestDelegate next, ILogger<LogMiddleware> logger)
 		{
 			_next = next;
+			_logger = logger;
 		}
 
 		public Task Invoke(HttpContext httpContext)
 		{
+			_logger.LogInformation("{DT} Passing through middleware", DateTime.UtcNow.ToLongTimeString());
 			return _next(httpContext);
 		}
 	}
