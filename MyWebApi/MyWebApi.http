@@ -1,6 +1,15 @@
 @MyWebApi_HostAddress = http://localhost:5236
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwianRpIjoiZWE5YTFiZmYtYWZiNy00MzkyLWI4MmEtNWMxZjlhNDcyNWY2IiwiZXhwIjoxNzQ0Mzc5MTg2LCJpc3MiOiJNeVdlYkFwaSBJc3N1ZXIifQ.rLlWLU4ivxHfbT1vFwy7WMAkATNAxb8yZ7nuof__vgI
 
 GET {{MyWebApi_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+GET {{MyWebApi_HostAddress}}/api/SampleAuthorization/protected_sample
+Authorization: Bearer {{token}}
+
+###
+GET {{MyWebApi_HostAddress}}/api/SampleAuthorization/sample
+Authorization: Bearer {{token}}
 
 ###

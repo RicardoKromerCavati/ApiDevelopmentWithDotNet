@@ -1,7 +1,7 @@
 using Common.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyAPI.Controllers;
+namespace MyWebApi.Controllers;
 
 public class PeopleController(
     ILogger<PeopleController> logger,
