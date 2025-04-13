@@ -10,3 +10,5 @@ dotnet ef database update --project .\DatabaseHandler\DatabaseHandler.csproj --s
 </ItemGroup>
 
 Update-Database -Verbose -Connection "server=localhost;port=3306;database=webapp-ef;user=root;password=;"
+
+Add-Migration Initial

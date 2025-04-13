@@ -2,7 +2,12 @@ namespace DatabaseHandler.Models;
 
 public class DbGamer
 {
-    public DbGamer(string name, string email, string password)
+	public DbGamer()
+	{
+		
+	}
+
+	public DbGamer(string name, string email, string password)
     {
         Name = name;
         Email = email;
