@@ -1,9 +1,12 @@
 using Common.Models;
+using DatabaseHandler;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MyAPI;
 using MyAPI.Services;
 using MyAPI.Services.Contracts;
+using MySqlConnector;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,16 +19,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
 
 builder.Services.AddAuthorization(options =>
 {
 	var adminRole = Role.Admin.ToString();
 	options.AddPolicy(adminRole, policy => policy.RequireRole(adminRole));
 });
-
-#region Dependency Injection Configuration
 
 builder.Services.AddTransient<ILifecycleService, LifecycleService>();
 builder.Services.AddTransient<LifecycleService2>();
@@ -49,7 +48,14 @@ builder.Services.AddAuthentication(options =>
 		};
 	});
 
-#endregion
+
+var connectionString = builder.Configuration.GetConnectionString(nameof(MyWebApi));
+var dbConnection = new MySqlConnection(connectionString);
+
+builder.Services.AddScoped<DbContext, Context>();
+builder.Services.AddDbContext<Context>(options => options.UseMySql(ServerVersion.AutoDetect(dbConnection)));
+//builder.Services.AddDbContext<Context>();
+
 
 var app = builder.Build();
 
@@ -65,7 +71,6 @@ app.MapGet("/Test",
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.MapOpenApi();
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }

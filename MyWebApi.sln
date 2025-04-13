@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebApi", "MyWebApi\MyWebApi.csproj", "{53EB3BE6-CC28-4F72-B9A8-8E552AFA7B3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User Interface", "User Interface", "{EF1A0F63-6E87-4A32-9CF4-F68A38FB5774}"
@@ -16,6 +19,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain Driven Design", "Dom
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Application", "External Application", "{3C0145F9-3963-4FFA-8415-14A623D567A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseHandler", "DatabaseHandler\DatabaseHandler.csproj", "{B685F9CA-9AB4-49D2-B011-A3CBE37A3C81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		Migrations.txt = Migrations.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,13 +40,24 @@ Global
 		{5D3AEB0C-8CA0-4873-82E4-406945C8935C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D3AEB0C-8CA0-4873-82E4-406945C8935C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D3AEB0C-8CA0-4873-82E4-406945C8935C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B685F9CA-9AB4-49D2-B011-A3CBE37A3C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B685F9CA-9AB4-49D2-B011-A3CBE37A3C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B685F9CA-9AB4-49D2-B011-A3CBE37A3C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B685F9CA-9AB4-49D2-B011-A3CBE37A3C81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{53EB3BE6-CC28-4F72-B9A8-8E552AFA7B3E} = {EF1A0F63-6E87-4A32-9CF4-F68A38FB5774}
-		{5D3AEB0C-8CA0-4873-82E4-406945C8935C} = {94EE362D-7D4F-43A2-B8A4-CB5690D92B8B}
 		{EF1A0F63-6E87-4A32-9CF4-F68A38FB5774} = {13D1C8F4-04A4-4236-BAEE-8423EE8254F9}
 		{7AF1215E-59AF-43BF-93BE-4D34F6C54361} = {13D1C8F4-04A4-4236-BAEE-8423EE8254F9}
-		{94EE362D-7D4F-43A2-B8A4-CB5690D92B8B} = {13D1C8F4-04A4-4236-BAEE-8423EE8254F9}
 		{4C089036-D3DE-4297-B4D3-D06A8B6D3B57} = {13D1C8F4-04A4-4236-BAEE-8423EE8254F9}
+		{94EE362D-7D4F-43A2-B8A4-CB5690D92B8B} = {13D1C8F4-04A4-4236-BAEE-8423EE8254F9}
+		{5D3AEB0C-8CA0-4873-82E4-406945C8935C} = {94EE362D-7D4F-43A2-B8A4-CB5690D92B8B}
+		{B685F9CA-9AB4-49D2-B011-A3CBE37A3C81} = {7AF1215E-59AF-43BF-93BE-4D34F6C54361}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25080FDA-EA5C-4AEB-8771-DCB9BB89DD94}
 	EndGlobalSection
 EndGlobal

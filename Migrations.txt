@@ -1,0 +1,12 @@
+dotnet tool install --global dotnet-ef --version 9.*
+dotnet ef migrations add Initial --project .\DatabaseHandler\DatabaseHandler.csproj --startup-project .\MyWebApi\MyWebApi.csproj
+dotnet ef database update --project .\DatabaseHandler\DatabaseHandler.csproj --startup-project .\MyWebApi\MyWebApi.csproj
+
+<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+</ItemGroup>
+
+Update-Database -Verbose -Connection "server=localhost;port=3306;database=webapp-ef;user=root;password=;"
