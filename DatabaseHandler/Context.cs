@@ -1,15 +1,12 @@
 ﻿using DatabaseHandler.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace DatabaseHandler
 {
 	public class Context : DbContext
 	{
-		private readonly IConfiguration _configuration;
-		public Context(IConfiguration configuration, DbContextOptions dbContextOptions) : base(dbContextOptions)
+		public Context(DbContextOptions dbContextOptions) : base(dbContextOptions)
 		{
-			_configuration = configuration;
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
