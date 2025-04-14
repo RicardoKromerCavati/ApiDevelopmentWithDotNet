@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using MyAPI.Services;
-using MyAPI.Services.Contracts;
+using MyWebApi.Enums;
+using MyWebApi.Services;
+using MyWebApi.Services.Contracts;
 
-namespace MyAPI.Controllers
+namespace MyWebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -38,7 +39,7 @@ namespace MyAPI.Controllers
   //      }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(Status status)
         {
             var result = new List<DateTime>();
 

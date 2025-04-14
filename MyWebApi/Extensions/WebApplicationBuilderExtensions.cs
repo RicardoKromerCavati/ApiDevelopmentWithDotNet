@@ -4,10 +4,15 @@ using DatabaseHandler.Contracts.Repositories;
 using DatabaseHandler.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite.Query.Internal;
 using Microsoft.IdentityModel.Tokens;
-using MyAPI.Services;
-using MyAPI.Services.Contracts;
+using Microsoft.OpenApi.Models;
 using MySqlConnector;
+using MyWebApi.ApiDocumentation.ExampleRequests;
+using MyWebApi.ApiDocumentation.SchemaFilters;
+using MyWebApi.Services;
+using MyWebApi.Services.Contracts;
+using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 
 namespace MyWebApi.Extensions
@@ -18,6 +23,7 @@ namespace MyWebApi.Extensions
 		{
 			ConfigureLogging(builder);
 			ConfigureEndpoints(builder);
+			ConfigureApiDocumentation(builder);
 			ConfigureServices(builder);
 			ConfigurePermissions(builder);
 			ConfigureDatabase(builder);
@@ -33,7 +39,49 @@ namespace MyWebApi.Extensions
 		{
 			builder.Services.AddControllers();
 			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+
+		}
+
+		private static void ConfigureApiDocumentation(WebApplicationBuilder builder)
+		{
+			builder.Services.AddSwaggerGen(options =>
+			{
+				options.EnableAnnotations();
+
+				//options.SwaggerDoc("v1", new OpenApiInfo
+				//{
+				//	Title = "My Web API Swagger Documentation",
+				//	Description = "This is an example of how to document my API :)",
+				//	Contact = new OpenApiContact() { Name = "Ricardo Kromer Cavati", Email = "sample@email.com" },
+				//	License = new OpenApiLicense() { Name = "MIT License", Url = new Uri("https://opensource.org/licenses/MIT") }
+				//});
+
+				options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					In = ParameterLocation.Header,
+					Description = "Please input the secret api key",
+					Name = "Authorization",
+					Type = SecuritySchemeType.ApiKey
+				});
+
+				var securityScheme = new OpenApiSecurityScheme
+				{
+					Reference = new OpenApiReference
+					{
+						Type = ReferenceType.SecurityScheme,
+						Id = "Bearer"
+					}
+				};
+
+				var securityRequirement = new OpenApiSecurityRequirement { { securityScheme, Array.Empty<string>() } };
+
+				options.AddSecurityRequirement(securityRequirement);
+
+				options.ExampleFilters();
+				options.SchemaFilter<EnumSchemaFilter>();
+			});
+
+			builder.Services.AddSwaggerExamplesFromAssemblyOf<DangerousAuthorizationModelExample>();
 		}
 
 		private static void ConfigureServices(WebApplicationBuilder builder)

@@ -1,9 +1,11 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using Common.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using MyWebApi.ApiDocumentation.ExampleRequests;
+using Swashbuckle.AspNetCore.Filters;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace MyWebApi.Controllers;
 
@@ -17,7 +19,9 @@ public class AuthenticationController(IConfiguration configuration) : Controller
         new("user", "user", Role.CommonUser)
     ];
 
+
     [HttpPost("login")]
+    [SwaggerRequestExample(typeof(DangerousAuthorization), typeof(DangerousAuthorizationModelExample))]
     public IActionResult Login(DangerousAuthorization dangerousAuthorization)
     {
         var (username, password) = dangerousAuthorization;

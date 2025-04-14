@@ -1,7 +1,6 @@
-﻿
-using MyAPI.Services.Contracts;
+﻿using MyWebApi.Services.Contracts;
 
-namespace MyAPI.Services;
+namespace MyWebApi.Services;
 
 public class LifecycleService : ILifecycleService
 {

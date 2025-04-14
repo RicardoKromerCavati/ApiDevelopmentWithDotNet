@@ -12,7 +12,7 @@ public interface IGamerRepository
 	void Dapper_Create(DbGamer gamer);
 	DbGamer? Dapper_Read(string name);
 	void Dapper_Update(int id, string email);
-	void Dapper_Delete(int id);
+	bool Dapper_Delete(int id);
 
 	IEnumerable<DbGamer> SelectAll();
 }

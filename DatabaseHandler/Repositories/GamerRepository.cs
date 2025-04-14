@@ -3,8 +3,6 @@ using DatabaseHandler.Contracts.Repositories;
 using DatabaseHandler.Models;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
-using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace DatabaseHandler.Repositories
 {
@@ -52,7 +50,7 @@ namespace DatabaseHandler.Repositories
 			connection.Execute(updateQuery, new { Email = email, Id = id });
 		}
 
-		public void Dapper_Delete (int id)
+		public bool Dapper_Delete (int id)
 		{
 			var connectionString = GetConnectionString();
 
@@ -60,7 +58,14 @@ namespace DatabaseHandler.Repositories
 
 			var deleteQuery = "DELETE FROM Gamers WHERE Id = @Id";
 
-			connection.Execute(deleteQuery, new { Id = id });
+			var rowsMofied = connection.Execute(deleteQuery, new { Id = id });
+
+			if (rowsMofied <= 0)
+			{
+				return false;
+			}
+
+			return true;
 		}
 
 		private string? GetConnectionString()

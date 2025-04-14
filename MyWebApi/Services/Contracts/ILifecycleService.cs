@@ -1,4 +1,4 @@
-﻿namespace MyAPI.Services.Contracts;
+﻿namespace MyWebApi.Services.Contracts;
 
 public interface ILifecycleService
 {

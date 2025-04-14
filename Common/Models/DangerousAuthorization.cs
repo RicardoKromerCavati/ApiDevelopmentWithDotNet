@@ -10,10 +10,10 @@ public class DangerousAuthorization
         Password = password;
     }
 
-    [JsonPropertyName("Username")]
+    [JsonPropertyName("username")]
     public string Username { get; init; }
     
-    [JsonPropertyName("Password")]
+    [JsonPropertyName("password")]
     public string Password { get; init; }
 
     public void Deconstruct(out string username, out string password)
