@@ -24,11 +24,11 @@ namespace MyWebApi.Middlewares
 	}
 
 	// Extension method used to add the middleware to the HTTP request pipeline.
-	public static class LogMiddlewareExtensions
-	{
-		public static IApplicationBuilder UseLogMiddleware(this IApplicationBuilder builder)
-		{
-			return builder.UseMiddleware<LogMiddleware>();
-		}
-	}
+	// public static class LogMiddlewareExtensions
+	// {
+	// 	public static IApplicationBuilder UseLogMiddleware(this IApplicationBuilder builder)
+	// 	{
+	// 		return builder.UseMiddleware<LogMiddleware>();
+	// 	}
+	// }
 }
